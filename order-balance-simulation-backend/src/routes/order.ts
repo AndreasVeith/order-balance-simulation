@@ -24,7 +24,7 @@ router.get("/", async (req: Request, res: Response, next: NextFunction) => {
 
 router.get("/cancel/:id", async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const result = await Order.findByIdAndUpdate(req.params.id, { status: OrderStatus.Canceled });
+        const result = await Order.findByIdAndUpdate(req.params.id, { status: OrderStatus.Canceled, completed: new Date() });
         if (result == null) {
             res.status(400).json(false);
         } else {

@@ -52,7 +52,7 @@ function App() {
         const result = await axios.get("https://order-balance-simulation.onrender.com/order");
         if (result.status === 200) {
             const data = result.data as [any];
-            const orders = data.map((item) => {
+            const orders = data.reverse().map((item) => {
                 return {
                     _id: item._id,
                     created: item.created,
@@ -79,7 +79,7 @@ function App() {
         <>
             <div className="min-w-full bg-slate-950 min-h-svh pt-10">
                 <div className="container mx-auto">
-                    <h2 className="text-2xl text-left pl-16">Order Trading Platform</h2>
+                    <h2 className="text-2xl text-left">Order Trading Platform</h2>
                     <div className="flex flex-wrap flex-col justify-between items-center gap-4 mt-4 xl:flex-row">
                         <Select
                             onChange={(value: number | string) => {
