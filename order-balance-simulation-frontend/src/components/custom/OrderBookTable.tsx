@@ -19,12 +19,12 @@ const OrderBookTable: React.FC<OrderBookTableProps> = ({ orderData, type, onRowC
             <table className="border-collapse border-slate-500 flex-1">
                 <thead className="block">
                     <tr>
-                        <th className={`py-1 text-left text-md ${colorClassName} px-2 w-auto sm:min-w-24`}>Price</th>
-                        <th className={`py-1 text-center text-md ${colorClassName} px-2 w-full sm:min-w-24`}>Amount</th>
-                        <th className={`py-1 text-right text-md ${colorClassName} px-2 w-full sm:min-w-24`}>Total</th>
+                        <th className={`py-1 text-left text-md ${colorClassName} px-2 w-auto sm:min-w-28`}>Price</th>
+                        <th className={`py-1 text-center text-md ${colorClassName} px-2 w-full sm:min-w-28`}>Amount</th>
+                        <th className={`py-1 text-right text-md ${colorClassName} px-2 w-full sm:min-w-28`}>Total</th>
                     </tr>
                 </thead>
-                <tbody className="block h-96 overflow-y-scroll">
+                <tbody className="block h-96 overflow-y-scroll scrollbar-thin scrollbar-thumb-slate-500 scrollbar-track-slate-800">
                     {orderData.map((order: IOrder, index: number) => {
                         return (
                             <tr
