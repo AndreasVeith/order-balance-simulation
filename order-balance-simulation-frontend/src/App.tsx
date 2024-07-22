@@ -27,7 +27,7 @@ function App() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const eventSource: EventSource = new EventSource("http://localhost:8088/live/");
+        const eventSource: EventSource = new EventSource("https://order-balance-simulation.onrender.com/live/");
         eventSource.onmessage = (event) => {
             const data = JSON.parse(event.data);
             if (data == true) {
@@ -41,7 +41,7 @@ function App() {
     }, []);
 
     const addOrder = async ({ type, symbol, price, quantity, total, status }: IOrderAdd) => {
-        await axios.post("http://localhost:8088/order", { type, symbol, price, quantity, total, status });
+        await axios.post("https://order-balance-simulation.onrender.com/order", { type, symbol, price, quantity, total, status });
         if (type === OrderType.BuyMarket || type === OrderType.SellMarktet) {
             toast.success("Successfully Filled!", { position: "top-center" });
         }
@@ -49,7 +49,7 @@ function App() {
     };
 
     const getOrderHistory = async () => {
-        const result = await axios.get("http://localhost:8088/order");
+        const result = await axios.get("https://order-balance-simulation.onrender.com/order");
         if (result.status === 200) {
             const data = result.data as [any];
             const orders = data.map((item) => {
@@ -66,7 +66,7 @@ function App() {
     };
 
     const cancelOrder = async (id: string) => {
-        const result = await axios.get(`http://localhost:8088/order/cancel/${id}`);
+        const result = await axios.get(`https://order-balance-simulation.onrender.com/order/cancel/${id}`);
         if (result.status === 200) {
             if (result.data === true) {
                 toast.success("Successfully Canceled!", { position: "top-center" });

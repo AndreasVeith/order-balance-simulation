@@ -55,7 +55,6 @@ const OrderSchema = new Schema<IOrder>({
     },
     created: {
         type: Date,
-        default: Date.now(),
     },
     completed: {
         type: Date,

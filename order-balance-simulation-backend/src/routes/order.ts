@@ -55,8 +55,11 @@ router.post("/", async (req: Request, res: Response, next: NextFunction) => {
             total,
             status,
             quantity,
-            created: Date.now(),
+            created: new Date(),
         });
+        if (status === OrderStatus.Filled) {
+            order.completed = new Date();
+        }
         const savedOrder = await order.save();
         if (!savedOrder) {
             res.status(400).json(false);
